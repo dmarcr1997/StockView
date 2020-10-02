@@ -1,11 +1,14 @@
 import mongoose from 'mongoose';
 
-const database = {
-    db: 'mongodb://localhost:27017/StockView'
+const config = {
+    db: 'mongodb://localhost:27017/local'
 };
 
-export const connect = (url = database.db, opts={}) => {
-    return mongoose.connect(url,
-        {...opts, useNewUrlParser: true}
+export const connect = (url=config.db, opts={}) => {
+    return mongoose.connect(
+      url,
+      { ...opts, useNewUrlParser: true, useUnifiedTopology: true }
     )
-}
+  }
+
+connect()
