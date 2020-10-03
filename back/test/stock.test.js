@@ -78,3 +78,12 @@ describe("GET /stocks", () => {
 })
 
 
+describe("GET /stocks/:id", () => {
+    it("gets a single stock", () => {
+        const res = request(app).get('/stocks/5f788dad5c3a17342425626a').then(res => {
+            expect(res.status).to.equal(200);
+        }).catch(e => console.log(e.message))
+    })
+})
+
+
