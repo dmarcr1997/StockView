@@ -5,6 +5,7 @@ const userRouter = Router();
 
 userRouter.route('/')
     .get(controllers.getMany)
+    .post(controllers.createOne)
 userRouter.route('/:id')
     .get(controllers.getOne)
 export default userRouter;
