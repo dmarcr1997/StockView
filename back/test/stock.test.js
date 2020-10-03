@@ -39,3 +39,42 @@ describe("Stock exists", () => {
     })
 })
 
+
+describe("GET /stocks", () => {
+    it("returns all stocks", () => {
+        const stocks = [
+            {
+                name: 'stock',
+                country: 'USA',
+                currency: 'USD',
+                exchange: 'NASDAQ/NMS (GLOBAL MARKET)',
+                description: 'Description',
+                ipo: "1980-12-12",
+                isin: "",
+                marketCapitalization: 1415993,
+                shareOutstanding: 4375.47998046875,
+                logo: 'logo',
+                ticker: 'AAPL'
+            },
+            {
+                name: 'stock2',
+                country: 'USA',
+                currency: 'USD',
+                exchange: 'NASDAQ/NMS (GLOBAL MARKET)',
+                description: 'Description',
+                ipo: "1980-12-13",
+                isin: "",
+                marketCapitalization: 1415994,
+                shareOutstanding: 4375.47998046876,
+                logo: 'logo',
+                ticker: 'AAPA'
+            }
+        ];
+        Stock.insertMany(stocks);
+        const res = request(app).get('/stocks').then(res => {
+            expect(res.status).to.equal(200);
+        }).catch(e => console.log(e.message))
+    })
+})
+
+

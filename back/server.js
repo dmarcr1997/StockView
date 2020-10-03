@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { connect } from './utils/db.js';
 import userRouter from './resources/users/user.routes.js';
+import stockRouter from './resources/stocks/stock.routes.js';
 
 
 //setup
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 //routes
 app.get('/', (req, res) => res.send({message: 'hi'}));
 app.use('/users', userRouter);
+app.use('/stocks', stockRouter);
 
 //port setup
 const port = process.env.PORT || 4000;
