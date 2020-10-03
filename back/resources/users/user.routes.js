@@ -5,5 +5,6 @@ const userRouter = Router();
 
 userRouter.route('/')
     .get(controllers.getMany)
-
+userRouter.route('/:id')
+    .get(controllers.getOne)
 export default userRouter;

@@ -6,6 +6,16 @@ const getMany = async (req, res) => {
     
 }
 
+const getOne = async (req, res) => {
+    try{
+        const user = await User.findOne({_id: req.params.id})
+        res.status(200).json({ user })    
+    }
+    catch {
+        res.status(400).json({error: 'cannot find user with that id'})
+    }
+}
 export default {
-    getMany
+    getMany,
+    getOne,
 }

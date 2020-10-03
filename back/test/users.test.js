@@ -27,9 +27,6 @@ describe("User exists", () => {
 })
 
 describe("User Crud", () => {
-    beforeEach(() => {
-        User.deleteMany({});
-    })
     describe("GET /users", () => {
         it("returns all users", () => {
             const users = [
@@ -38,8 +35,21 @@ describe("User Crud", () => {
             ];
             User.insertMany(users);
             const res = request(app).get('/users').then(res => {
+                let body = res.body
                 expect(res.status).to.equal(200);
-                expect(res.body.length).to.equal(2);
+            }).catch(e => console.log(e.message))
+        })
+    })
+    describe("GET /users/:id", () => {
+        it("gets a single user", () => {
+            const user = 
+            {
+                username: 'User1',
+                password: 'pass'
+            }
+            User.create(user)
+            const res = request(app).get('/users/5f7763767d48730f5194bb01').then(res => {
+                expect(res.status).to.equal(200);
             }).catch(e => console.log(e.message))
         })
     })
